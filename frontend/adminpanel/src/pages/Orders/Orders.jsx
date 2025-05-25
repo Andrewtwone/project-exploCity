@@ -1,11 +1,11 @@
 import React from 'react'
 
-const ListEvent = () => {
+const Orders = () => {
     return (
         <div>
-            ListEvent
+
         </div>
     )
 }
 
-export default ListEvent;
+export default Orders;

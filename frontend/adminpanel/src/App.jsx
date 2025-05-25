@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import AddEvent from './pages/AddEvent/AddEvent'
-import ListEvent from './pages/ListEvent/ListEvent'
-import Purchases from './pages/Purchases/Purchases'
+import AddFood from './pages/AddFood/AddFood'
+import ListFood from './pages/ListFood/ListFood'
+import Orders from './pages/Orders/Orders'
 import { Route, Routes } from 'react-router-dom'
 import SideBar from './components/Sidebar/Sidebar'
 import Menubar from './components/Menubar/Menubar'
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -21,13 +22,14 @@ const App = () => {
         <div id="page-content-wrapper">
 
           <Menubar toggleSidebar={toggleSidebar} />
+          <ToastContainer />
 
           <div className="container-fluid">
             <Routes>
-              <Route path='/add' element={<AddEvent />} />
-              <Route path='/list' element={<ListEvent />} />
-              <Route path='/purchases' element={<Purchases />} />
-              <Route path='/' element={<ListEvent />} />
+              <Route path='/add' element={<AddFood />} />
+              <Route path='/list' element={<ListFood />} />
+              <Route path='/purchases' element={<Orders />} />
+              <Route path='/' element={<Orders />} />
             </Routes>
           </div>
         </div>
