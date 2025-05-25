@@ -10,11 +10,11 @@ const SideBar = ({ sidebarVisible }) => {
             </div>
             <div className="list-group list-group-flush">
                 <Link className="list-group-item list-group-item-action list-group-item-light p-3" to="/add">
-                    <i className='bi bi-plus-circle me-2' />Add Food</Link>
+                    <i className='bi bi-plus-circle me-2' />Add Event</Link>
                 <Link className="list-group-item list-group-item-action list-group-item-light p-3" to="/list">
-                    <i className='bi bi-list-ul me-2' />List Food</Link>
+                    <i className='bi bi-list-ul me-2' />List Event</Link>
                 <Link className="list-group-item list-group-item-action list-group-item-light p-3" to="/purchases">
-                    <i className='bi bi bi-receipt me-2' />Orders</Link>
+                    <i className='bi bi bi-receipt me-2' />Purchases</Link>
             </div>
         </div>
     )

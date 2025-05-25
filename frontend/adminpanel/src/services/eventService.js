@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:8080/api/foods'
+const API_URL = 'http://localhost:8080/api/sights'
 
-export const addFood = async (foodData, image) => {
+export const addEvent = async (foodData, image) => {
     const formData = new FormData();
-    formData.append('food', JSON.stringify(foodData));
+    formData.append('sight', JSON.stringify(foodData));
     formData.append('file', image);
 
     try {

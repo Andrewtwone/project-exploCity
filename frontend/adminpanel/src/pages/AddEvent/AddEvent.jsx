@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { assets } from '../../assets/assets';
 import axios from 'axios';
-import { addFood } from '../../services/foodService';
+import { addEvent } from '../../services/eventService';
 import { toast } from 'react-toastify';
 
 
@@ -11,7 +11,7 @@ const AddFood = () => {
         name: '',
         description: '',
         price: '',
-        category: 'Biryani'
+        category: 'Sport'
     });
 
     const onChangeHandler = (event) => {
@@ -31,12 +31,12 @@ const AddFood = () => {
 
 
         try {
-            await addFood(data, image)
-            toast.success('Food added successfully.')
-            setData({ name: "", description: "", category: "Biryani", price: "" });
+            await addEvent(data, image)
+            toast.success('Event added successfully.')
+            setData({ name: "", description: "", category: "Sport", price: "" });
             setImage(null)
         } catch (error) {
-            toast.error("Error adding food.")
+            toast.error("Error adding event.")
         }
 
 
@@ -69,13 +69,11 @@ const AddFood = () => {
                             <div className="mb-3">
                                 <label htmlFor="category" className="form-label">Category</label>
                                 <select name='category' id='category' className='form-control' onChange={onChangeHandler} value={data.category}>
-                                    <option value="Biryani">Biryani</option>
-                                    <option value="Cake">Cake</option>
-                                    <option value="Burger">Burger</option>
-                                    <option value="Pizza">Pizza</option>
-                                    <option value="Rolls">Rolls</option>
-                                    <option value="Salad">Salad</option>
-                                    <option value="Ice cream">Ice cream</option>
+                                    <option value="Sport">Sport</option>
+                                    <option value="Cultural">Cultural</option>
+                                    <option value="Concert">Concert</option>
+                                    <option value="Festival">Festival</option>
+                                    <option value="Entertainments">Entertainments</option>
                                 </select>
                             </div>
 
