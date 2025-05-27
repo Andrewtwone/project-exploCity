@@ -11,7 +11,7 @@ const AddFood = () => {
         name: '',
         description: '',
         price: '',
-        category: 'Sport'
+        category: 'Sport Events'
     });
 
     const onChangeHandler = (event) => {
@@ -46,7 +46,7 @@ const AddFood = () => {
             <div className="row">
                 <div className="card col-md-4">
                     <div className="card-body">
-                        <h2 className="mb-4">Add Food</h2>
+                        <h2 className="mb-4">Add Event</h2>
                         <form onSubmit={onSubmitHandler}>
                             <div className="mb-3">
                                 <label htmlFor="image" className="form-label">
@@ -57,29 +57,32 @@ const AddFood = () => {
 
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label">Name</label>
-                                <input type="text" className="form-control" id="name" required name='name' onChange={onChangeHandler} value={data.name} />
+                                <input type="text" placeholder="Enter name..." className="form-control" id="name" required name='name' onChange={onChangeHandler} value={data.name} />
                             </div>
 
                             <div className="mb-3">
                                 <label htmlFor="description" className="form-label">Description</label>
-                                <textarea className="form-control" id="message" rows="5" required name='description' onChange={onChangeHandler} value={data.description}></textarea>
+                                <textarea placeholder='Write content here...' className="form-control" id="message" rows="5" required name='description' onChange={onChangeHandler} value={data.description}></textarea>
                             </div>
 
 
                             <div className="mb-3">
                                 <label htmlFor="category" className="form-label">Category</label>
                                 <select name='category' id='category' className='form-control' onChange={onChangeHandler} value={data.category}>
-                                    <option value="Sport">Sport</option>
-                                    <option value="Cultural">Cultural</option>
-                                    <option value="Concert">Concert</option>
-                                    <option value="Festival">Festival</option>
-                                    <option value="Entertainments">Entertainments</option>
+                                    <option value="Sport">Sport Events</option>
+                                    <option value="Concerts&MusicFestivals">Concerts & Music Festivals</option>
+                                    <option value="Cinema&FilmFestivals">Cinema & Film Festivals</option>
+                                    <option value="Exhibitions&Art">Exhibitions & Art Shows</option>
+                                    <option value="Theatre&Perfomances">Theatre & Perfomances`</option>
+                                    <option value="Cultural&Liberty">Cultural & Literary Events</option>
+                                    <option value="Food&Drink">Food & Drink Events</option>
+                                    <option value="Family&Community">Family & Community Events</option>
                                 </select>
                             </div>
 
                             <div className="mb-3">
                                 <label htmlFor="price" className="form-label">Price</label>
-                                <input type='number' name='price' id='price' className='form-control' onChange={onChangeHandler} value={data.price}></input>
+                                <input type='number' name='price' placeholder='zł' id='price' className='form-control' onChange={onChangeHandler} value={data.price}></input>
                             </div>
                             <button type="submit" className="btn btn-primary">Save</button>
                         </form>
