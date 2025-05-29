@@ -74,7 +74,7 @@ const AddFood = () => {
                                     <option value="Cinema&FilmFestivals">Cinema & Film Festivals</option>
                                     <option value="Exhibitions&Art">Exhibitions & Art Shows</option>
                                     <option value="Theatre&Perfomances">Theatre & Perfomances`</option>
-                                    <option value="Cultural&Liberty">Cultural & Literary Events</option>
+                                    <option value="Cultural&Literary">Cultural & Literary Events</option>
                                     <option value="Food&Drink">Food & Drink Events</option>
                                     <option value="Family&Community">Family & Community Events</option>
                                 </select>
