@@ -7,6 +7,8 @@ import ExploreEvent from './pages/ExploreEvent/ExploreEvent';
 import EventDetails from './pages/EventDetails/EventDetails';
 import Cart from './pages/Cart/Cart';
 import BookTicket from './pages/BookTicket/BookTicket';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 
 
@@ -21,6 +23,8 @@ const App = () => {
         <Route path='/sights/:id' element={<EventDetails />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout' element={<BookTicket />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
     </div>
   )

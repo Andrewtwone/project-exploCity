@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { fetchEventDetails } from '../../service/eventService';
 import { toast } from 'react-toastify'
+import { StoreContext } from "../../context/StoreContext"
 import './EventDetails.css'
+
 
 const EventDetails = () => {
     const { id } = useParams();
     const [event, setEvent] = useState(null);
     const [error, setError] = useState(null);
+    const { increaseQty } = useContext(StoreContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loadEventDetails = async () => {
@@ -42,6 +47,11 @@ const EventDetails = () => {
         );
     }
 
+    const addToCart = () => {
+        increaseQty(event.id);
+        navigate('/cart');
+    }
+
     return (
         <section className="event-details-section py-5">
             <div className="container px-4 px-lg-5 my-5">
@@ -67,7 +77,7 @@ const EventDetails = () => {
                             <p className="lead mb-4">{event.description}</p>
                         </div>
                         <div className="d-flex action-buttons">
-                            <button className="btn btn-primary flex-shrink-0" type="button">
+                            <button className="btn btn-primary flex-shrink-0" type="button" onClick={addToCart}>
                                 <i className="bi bi-cart-fill me-2"></i>
                                 Add to cart
                             </button>
