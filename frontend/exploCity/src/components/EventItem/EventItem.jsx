@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './EventItem.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext';
 
 const EventItem = ({ name, description, id, imageUrl, price }) => {
+
+    const { increaseQty, decreaseQty, quantities } = useContext(StoreContext);
+
     const navigate = useNavigate();
 
     const handleCardClick = (e) => {
-        // Don't navigate if clicking on the action buttons
-        if (!e.target.closest('.card-actions')) {
+        // Don't navigate if clicking on the add button
+        if (!e.target.closest('.addBtns') && !e.target.closest('.btn-primary')) {
             navigate(`/sights/${id}`);
         }
     };
+
+    // const handleAddClick = (e) => {
+    //     e.stopPropagation();
+    // };
 
     return (
         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -37,10 +45,23 @@ const EventItem = ({ name, description, id, imageUrl, price }) => {
                     </div>
                 </div>
                 <div className="card-footer d-flex justify-content-between bg-light card-actions">
-                    <button className="btn btn-primary btn-sm">View Event</button>
-                    <button className="btn btn-outline-secondary btn-sm">
-                        <i className="bi bi-heart"></i>
-                    </button>
+                    <button className="btn btn-outline-primary btn-sm" onClick={handleCardClick}>View Event</button>
+                    {quantities[id] > 0 ? (
+                        <div className="d-flex align-items-center gap-2 addBtns">
+                            <button className="btn btn-danger btn-sm" onClick={() => decreaseQty(id)}>
+                                <i className="bi bi-dash-circle"></i>
+                            </button>
+                            <span className="fw-bold">{quantities[id]}</span>
+                            <button className="btn btn-success btn-sm" onClick={() => increaseQty(id)}>
+                                <i className="bi bi-plus-circle"></i>
+                            </button>
+                        </div>
+                    ) : (
+                        <button className="btn btn-primary btn-sm" onClick={() => increaseQty(id)}>
+                            <i className="bi bi-plus-circle"></i>
+                        </button>
+                    )}
+
                 </div>
             </div>
         </div>

@@ -5,6 +5,9 @@ import Home from './pages/Home/Home';
 import ContactUs from './pages/Contact/ContactUs';
 import ExploreEvent from './pages/ExploreEvent/ExploreEvent';
 import EventDetails from './pages/EventDetails/EventDetails';
+import Cart from './pages/Cart/Cart';
+import BookTicket from './pages/BookTicket/BookTicket';
+
 
 
 const App = () => {
@@ -16,6 +19,8 @@ const App = () => {
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/explore' element={<ExploreEvent />} />
         <Route path='/sights/:id' element={<EventDetails />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<BookTicket />} />
       </Routes>
     </div>
   )

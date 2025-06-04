@@ -24,7 +24,7 @@ export const categories = [
         icon: music
     },
     {
-        category: "Ciname & Film Festivals",
+        category: "Cinema & Film Festivals",
         icon: cinema
     },
     {
@@ -40,11 +40,11 @@ export const categories = [
         icon: cultural
     },
     {
-        category: "Food & Drink Events",
+        category: "Food & Drink",
         icon: drinks
     },
     {
-        category: "Family & Community Events",
+        category: "Family & Community",
         icon: community
     }
 ];

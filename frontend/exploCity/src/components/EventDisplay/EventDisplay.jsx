@@ -3,14 +3,19 @@ import { StoreContext } from '../../context/StoreContext';
 import './EventDisplay.css';
 import EventItem from '../EventItem/EventItem';
 
-const EventDisplay = () => {
-    const { foodList } = useContext(StoreContext);
+const EventDisplay = ({ category, searchText }) => {
 
+
+    const { eventList } = useContext(StoreContext);
+    const filteredEvents = eventList.filter(event =>
+        (category === 'All' || event.category === category) &&
+        event.name.toLowerCase().includes(searchText.toLowerCase())
+    );
     return (
         <div className="event-display container py-4">
             <div className="row g-4">
-                {foodList && foodList.length > 0 ? (
-                    foodList.map((event, index) => (
+                {filteredEvents && filteredEvents.length > 0 ? (
+                    filteredEvents.map((event, index) => (
                         <EventItem key={index}
                             name={event.name}
                             description={event.description}
