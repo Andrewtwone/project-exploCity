@@ -2,20 +2,27 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import { assets } from '../../assets/asserts';
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
+    const { login } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        // Simulate API call
-        setTimeout(() => {
+        setError('');
+
+        try {
+            await login(email, password);
+        } catch (error) {
+            setError(error.message || 'Invalid email or password');
+        } finally {
             setIsLoading(false);
-            // Add your actual login logic here
-        }, 1500);
+        }
     };
 
     return (
@@ -27,6 +34,12 @@ const Login = () => {
                     <p>Please sign in to continue</p>
                 </div>
 
+                {error && (
+                    <div className="login-error-message">
+                        {error}
+                    </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="login-auth-form">
                     <div className="login-form-group">
                         <div className="login-input-group">
@@ -35,7 +48,10 @@ const Login = () => {
                                 type="email"
                                 placeholder="Email address"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    setError('');
+                                }}
                                 required
                             />
                         </div>
@@ -48,7 +64,10 @@ const Login = () => {
                                 type="password"
                                 placeholder="Password"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    setError('');
+                                }}
                                 required
                             />
                         </div>

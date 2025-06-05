@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './Register.css';
 import { Link } from 'react-router-dom';
 import { assets } from '../../assets/asserts';
+import { useAuth } from '../../context/AuthContext';
 
 const Register = () => {
+    const { register } = useAuth();
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -12,6 +14,7 @@ const Register = () => {
         confirmPassword: ''
     });
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,16 +22,35 @@ const Register = () => {
             ...prev,
             [name]: value
         }));
+        setError('');
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        // Simulate API call
-        setTimeout(() => {
+        setError('');
+
+        // Validate passwords match
+        if (formData.password !== formData.confirmPassword) {
+            setError('Passwords do not match');
             setIsLoading(false);
-            // Add your actual registration logic here
-        }, 1500);
+            return;
+        }
+
+        try {
+            // Combine first and last name
+            const userData = {
+                name: `${formData.firstName.trim()} ${formData.lastName.trim()}`.trim(),
+                email: formData.email,
+                password: formData.password
+            };
+
+            await register(userData);
+            // Registration and login will be handled by the AuthContext
+        } catch (error) {
+            setError(error.message || 'Registration failed. Please try again.');
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -39,6 +61,12 @@ const Register = () => {
                     <h2>Create Account</h2>
                     <p>Join our community today</p>
                 </div>
+
+                {error && (
+                    <div className="register-error-message">
+                        {error}
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="register-auth-form">
                     <div className="register-form-row">
