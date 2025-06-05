@@ -11,7 +11,7 @@ const ExploreEvent = () => {
                     <div className="col-md-6">
                         <form onSubmit={(e) => e.preventDefault()}>
                             <div className="input-group mb-3">
-                                <select className='form-select mt-2' style={{ "maxWidth": "150px" }} onChange={(e) => setCategory(e.target.value)}>
+                                <select className='form-select' style={{ "maxWidth": "150px" }} onChange={(e) => setCategory(e.target.value)}>
                                     <option value="All">All</option>
                                     <option value="Sport Events">Sport Events</option>
                                     <option value="Concerts & Music Festivals">Concerts & Music Festivals</option>
@@ -22,9 +22,9 @@ const ExploreEvent = () => {
                                     <option value="Food & Drink">Food & Drink Events</option>
                                     <option value="Family & Community">Family & Community Events</option>
                                 </select>
-                                <input type="text" className='form-control mt-2' placeholder='Search an event...'
+                                <input type="text" className='form-control' placeholder='Search an event...'
                                     onChange={(e) => setSearchText(e.target.value)} value={searchText} />
-                                <button className='btn btn-primary mt-2' type='submit'>
+                                <button className='btn btn-primary' type='submit'>
                                     <i className='bi bi-search'></i>
                                 </button>
                             </div>

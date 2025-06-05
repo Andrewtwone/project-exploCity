@@ -1,0 +1,312 @@
+/* Import shared auth styles */
+@import '../Login/Login.css';
+
+/* Register component styles */
+.register-auth-container {
+    min-height: 100vh;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 20px;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.register-auth-box {
+    background: white;
+    border-radius: 20px !important;
+    padding: 40px !important;
+    width: 100% !important;
+    max-width: 450px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: register-slideUpFade 0.6s ease-out;
+    margin: 0 !important;
+}
+
+.register-auth-header {
+    text-align: center !important;
+    margin-bottom: 30px !important;
+}
+
+.register-auth-logo {
+    width: 120px !important;
+    margin-bottom: 20px !important;
+    animation: register-fadeIn 1s ease-out;
+}
+
+.register-auth-header h2 {
+    margin-bottom: 10px !important;
+    color: #2d3748 !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+}
+
+.register-auth-header p {
+    color: #718096 !important;
+    font-size: 16px !important;
+    margin-bottom: 0 !important;
+}
+
+.register-auth-form {
+    margin-top: 30px !important;
+    width: 100% !important;
+}
+
+.register-form-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 15px !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+}
+
+.register-form-group {
+    margin-bottom: 20px !important;
+    width: 100% !important;
+}
+
+.register-input-group {
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    padding: 0 15px !important;
+    transition: all 0.3s ease;
+    width: 100% !important;
+    margin: 0 !important;
+    background: transparent !important;
+    white-space: nowrap !important;
+}
+
+.register-input-group:focus-within {
+    border-color: #4299e1 !important;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15) !important;
+}
+
+.register-input-group i {
+    color: #a0aec0 !important;
+    font-size: 18px !important;
+    transition: color 0.3s ease;
+    margin-right: 10px !important;
+}
+
+.register-input-group:focus-within i {
+    color: #4299e1 !important;
+}
+
+.register-input-group input {
+    width: 100% !important;
+    padding: 15px 0 !important;
+    border: none !important;
+    background: none !important;
+    outline: none !important;
+    font-size: 16px !important;
+    color: #2d3748 !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.register-input-group input::placeholder {
+    color: #a0aec0 !important;
+}
+
+.register-auth-button {
+    width: 100% !important;
+    padding: 15px !important;
+    background: #4299e1 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 0 !important;
+}
+
+.register-auth-button:hover {
+    background: #2b6cb0 !important;
+    transform: translateY(-1px);
+}
+
+.register-auth-button:active {
+    transform: translateY(1px);
+}
+
+.register-auth-button.loading {
+    background: #4299e1 !important;
+    cursor: not-allowed;
+}
+
+.register-auth-footer {
+    text-align: center !important;
+    margin-top: 20px !important;
+}
+
+.register-auth-link {
+    color: #4299e1 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: color 0.3s ease;
+}
+
+.register-auth-link:hover {
+    color: #2b6cb0 !important;
+}
+
+.register-social-login {
+    margin-top: 30px !important;
+    text-align: center !important;
+}
+
+.register-social-login p {
+    color: #718096 !important;
+    margin-bottom: 15px !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    width: 100% !important;
+}
+
+.register-social-login p::before,
+.register-social-login p::after {
+    content: "";
+    height: 1px !important;
+    background: #e2e8f0 !important;
+    flex: 1 !important;
+}
+
+.register-social-buttons {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin: 0 !important;
+}
+
+.register-social-button {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 12px !important;
+    border: 2px solid #e2e8f0 !important;
+    background: white !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.register-social-button i {
+    font-size: 20px !important;
+    transition: all 0.3s ease;
+}
+
+.register-social-button.google i {
+    color: #DB4437 !important;
+}
+
+.register-social-button.facebook i {
+    color: #4267B2 !important;
+}
+
+.register-social-button.apple i {
+    color: #000000 !important;
+}
+
+.register-social-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.register-spinner {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 4px !important;
+}
+
+.register-spinner > div {
+    width: 8px !important;
+    height: 8px !important;
+    background-color: white !important;
+    border-radius: 50% !important;
+    animation: register-bounce 1.4s infinite ease-in-out both;
+}
+
+.register-spinner .bounce1 {
+    animation-delay: -0.32s;
+}
+
+.register-spinner .bounce2 {
+    animation-delay: -0.16s;
+}
+
+/* Password strength indicator */
+.register-input-group input[type="password"]:focus {
+    border-color: var(--strength-color, #e2e8f0) !important;
+}
+
+.register-input-group input[type="password"]:focus:valid {
+    --strength-color: #48bb78;
+}
+
+/* Animations */
+@keyframes register-bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+@keyframes register-slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes register-fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .register-form-row {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    .register-auth-box {
+        padding: 30px 20px !important;
+    }
+
+    .register-auth-logo {
+        width: 100px !important;
+    }
+
+    .register-social-button {
+        width: 45px !important;
+        height: 45px !important;
+    }
+}

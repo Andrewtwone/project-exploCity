@@ -101,7 +101,7 @@ const BookTicket = () => {
                                             type="email"
                                             className="form-control"
                                             id="email"
-                                            placeholder="Email"
+                                            placeholder="samplemail@example.com"
                                             required=""
                                         />
                                     </div>
