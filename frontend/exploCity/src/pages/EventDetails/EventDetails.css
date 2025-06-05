@@ -1,0 +1,69 @@
+.card-img-top {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+    transform: scale(1.02);
+}
+
+/* Add a container for the image to maintain aspect ratio */
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.category {
+    font-size: 1.2rem !important;
+    margin-bottom: 3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 400px;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-img-top {
+        height: 300px;
+    }
+}
+
+/* Event details styling */
+.event-details-section {
+    background-color: #fff;
+    padding: 2rem 0;
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+.price-tag {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.description-container {
+    margin: 2rem 0;
+    line-height: 1.8;
+}
+
+.action-buttons {
+    gap: 1rem;
+}
+
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+}

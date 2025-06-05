@@ -70,13 +70,13 @@ const AddFood = () => {
                                 <label htmlFor="category" className="form-label">Category</label>
                                 <select name='category' id='category' className='form-control' onChange={onChangeHandler} value={data.category}>
                                     <option value="Sport">Sport Events</option>
-                                    <option value="Concerts&MusicFestivals">Concerts & Music Festivals</option>
-                                    <option value="Cinema&FilmFestivals">Cinema & Film Festivals</option>
-                                    <option value="Exhibitions&Art">Exhibitions & Art Shows</option>
-                                    <option value="Theatre&Perfomances">Theatre & Perfomances`</option>
-                                    <option value="Cultural&Liberty">Cultural & Literary Events</option>
-                                    <option value="Food&Drink">Food & Drink Events</option>
-                                    <option value="Family&Community">Family & Community Events</option>
+                                    <option value="Concerts & Music Festivals">Concerts & Music Festivals</option>
+                                    <option value="Cinema & Film Festivals">Cinema & Film Festivals</option>
+                                    <option value="Exhibitions & Art Shows">Exhibitions & Art Shows</option>
+                                    <option value="Theatre & Perfomances">Theatre & Perfomances</option>
+                                    <option value="Cultural & Literary">Cultural & Literary Events</option>
+                                    <option value="Food & Drink">Food & Drink Events</option>
+                                    <option value="Family & Community">Family & Community Events</option>
                                 </select>
                             </div>
 

@@ -1,0 +1,10 @@
+.contact-form {
+    background-color: #f8f9fa !important;
+    border-radius: 20px !important;
+}
+
+.custom-input {
+    border-radius: 10px !important;
+    padding: 12px !important;
+    border: 2px solid #e9ecef !important;
+}

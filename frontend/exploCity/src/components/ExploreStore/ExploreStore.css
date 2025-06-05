@@ -1,0 +1,121 @@
+.explore-menu-list-item.active {
+    border: 4px solid tomato;
+    padding: 2px;
+}
+
+.explore-menu {
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.explore-menu h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.scroll-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.scroll-icon:hover {
+    color: #333;
+    /* color: tomato; */
+}
+
+.explore-menu-list {
+    padding: 1rem 0;
+    scroll-behavior: smooth;
+}
+
+.explore-menu-list-item {
+    min-width: 280px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: inherit;
+    display: block;
+    border: 2px solid transparent;
+}
+
+.explore-menu-list-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: inherit;
+}
+
+.explore-menu-list-item:active {
+    animation: clickPulse 0.3s ease;
+}
+
+.explore-menu-list-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.explore-menu-list-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.explore-menu-list-item p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.explore-menu-list::-webkit-scrollbar {
+    display: none;
+}
+
+.explore-menu-list {
+    scrollbar-width: none;
+}
+
+/* Active state for category items */
+.explore-menu-list-item.active {
+    background-color: rgba(13, 110, 253, 0.05);
+    border-color: #0d6efd;
+    transform: translateY(-5px);
+}
+
+/* .explore-menu-item .active {
+    border: 5px solid tomato;
+    padding: 2px;
+} */
+
+/* Click animation */
+@keyframes clickPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Active state styling */
+.explore-menu-list-item img.active {
+    border: 3px solid #0d6efd;
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.3);
+    transform: scale(1.02);
+}
+
+

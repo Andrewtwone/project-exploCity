@@ -1,0 +1,48 @@
+.form-select option {
+    font-size: 16px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+}
+
+/* Style for country options with flags */
+.flag-icon {
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.flag-icon svg {
+    width: 20px;
+    height: 15px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled state styling */
+.form-select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Custom styling for the select elements */
+.form-select {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    min-height: 42px;
+}
+
+/* Style for the country select specifically */
+#country {
+    padding-left: 0.75rem;
+}
+
+#country option {
+    padding: 8px 12px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
