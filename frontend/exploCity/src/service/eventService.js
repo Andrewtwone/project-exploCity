@@ -1,23 +1,23 @@
-import axios from "axios";
+import api from './api';
 
-const API_URL = "http://localhost:8080/api/sights";
+const SIGHTS_ENDPOINT = '/sights';
 
 export const fetchEventList = async () => {
     try {
-        const response = await axios.get(API_URL);
-        return response.data
+        const response = await api.get(SIGHTS_ENDPOINT);
+        return response.data;
     } catch (error) {
-        console.log('Error fetching the food list', error);
+        console.error('Error fetching events:', error);
         throw error;
     }
-}
+};
 
 export const fetchEventDetails = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}/${id}`);
+        const response = await api.get(`${SIGHTS_ENDPOINT}/${id}`);
         return response.data;
     } catch (error) {
-        console.log('Error fetching food details', error);
+        console.error('Error fetching event details:', error);
         throw error;
     }
 };

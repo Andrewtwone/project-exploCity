@@ -1,13 +1,13 @@
 import { createContext, useEffect, useState } from "react";
-import axios from 'axios';
 import { fetchEventList } from '../service/eventService';
 
 export const StoreContext = createContext(null);
 
 export const StoreContextProvider = (props) => {
     const [eventList, setEventList] = useState([]);
-    const [quantities, setQuantities] = useState({
-    });
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [quantities, setQuantities] = useState({});
 
     const increaseQty = (eventId) => {
         setQuantities((prev) => ({ ...prev, [eventId]: (prev[eventId] || 0) + 1 }))
@@ -25,8 +25,25 @@ export const StoreContextProvider = (props) => {
         })
     }
 
+    const refreshEvents = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const data = await fetchEventList();
+            setEventList(data);
+        } catch (error) {
+            setError(error.message || 'Failed to load events');
+            setEventList([]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const contextValue = {
         eventList,
+        loading,
+        error,
+        refreshEvents,
         increaseQty,
         decreaseQty,
         quantities,
@@ -34,11 +51,7 @@ export const StoreContextProvider = (props) => {
     }
 
     useEffect(() => {
-        async function loadData() {
-            const data = await fetchEventList();
-            setEventList(data);
-        };
-        loadData();
+        refreshEvents();
     }, []);
 
     return (
