@@ -3,13 +3,20 @@ import './Menubar.css'
 import { assets } from '../../assets/asserts'
 import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
-
+import { useAuth } from '../../context/AuthContext'
 
 const Menubar = () => {
     const [active, setActive] = useState('home');
     const { quantities } = useContext(StoreContext);
-    const uniqueItemsInCart = Object.values(quantities).filter(qty => qty > 0).length;
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
+    const uniqueItemsInCart = Object.values(quantities).filter(qty => qty > 0).length;
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container">
@@ -38,8 +45,23 @@ const Menubar = () => {
                                 <span className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning'>{uniqueItemsInCart}</span>
                             </div>
                         </Link>
-                        <button className='btn btn-outline-primary' onClick={() => navigate('/login')}>Login</button>
-                        <button className='btn btn-outline-success' onClick={() => navigate('/register')}>Register</button>
+                        {user ? (
+                            <div className="d-flex align-items-center gap-2">
+                                <Link to="/profile" className="btn btn-outline-primary">
+                                    <i className="bi bi-person-circle me-2"></i>
+                                    Profile
+                                </Link>
+                                <button className="btn btn-outline-danger" onClick={handleLogout}>
+                                    <i className="bi bi-box-arrow-right me-2"></i>
+                                    Logout
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="d-flex align-items-center gap-2">
+                                <button className='btn btn-outline-primary' onClick={() => navigate('/login')}>Login</button>
+                                <button className='btn btn-outline-success' onClick={() => navigate('/register')}>Register</button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

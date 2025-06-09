@@ -9,6 +9,7 @@ import Cart from './pages/Cart/Cart';
 import BookTicket from './pages/BookTicket/BookTicket';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import Profile from './components/Profile/Profile';
 import { useAuth } from './context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
@@ -29,28 +30,22 @@ const App = () => {
     <div>
       {!isAuthPage && <Menubar />}
       <Routes>
+        {/* Public Routes */}
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/explore' element={<ExploreEvent />} />
+        <Route path='/sights/:id' element={<EventDetails />} />
 
         {/* Protected Routes */}
-        <Route path='/' element={
+        <Route path='/profile' element={
           <ProtectedRoute>
-            <Home />
+            <Profile />
           </ProtectedRoute>
         } />
         <Route path='/contact' element={
           <ProtectedRoute>
             <ContactUs />
-          </ProtectedRoute>
-        } />
-        <Route path='/explore' element={
-          <ProtectedRoute>
-            <ExploreEvent />
-          </ProtectedRoute>
-        } />
-        <Route path='/sights/:id' element={
-          <ProtectedRoute>
-            <EventDetails />
           </ProtectedRoute>
         } />
         <Route path='/cart' element={

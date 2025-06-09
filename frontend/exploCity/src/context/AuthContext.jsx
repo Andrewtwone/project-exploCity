@@ -9,10 +9,10 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Check if user is logged in on mount
+
         const token = localStorage.getItem('jwt_token');
         if (token) {
-            setUser({ token }); // You might want to decode the token to get user info
+            setUser({ token });
         }
         setLoading(false);
     }, []);
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
             }
 
             const data = await response.json();
-            // Automatically log in after successful registration
+
             await login(userData.email, userData.password);
             return data;
         } catch (error) {
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     if (loading) {
-        return null; // or a loading spinner
+        return null;
     }
 
     return (

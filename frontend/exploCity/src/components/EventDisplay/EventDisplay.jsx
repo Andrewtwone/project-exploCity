@@ -1,12 +1,32 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { StoreContext } from '../../context/StoreContext';
 import './EventDisplay.css';
 import EventItem from '../EventItem/EventItem';
+import api from '../../service/api';
 
 const EventDisplay = ({ category, searchText }) => {
-    const { eventList, loading, error, refreshEvents } = useContext(StoreContext);
+    const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const filteredEvents = eventList.filter(event =>
+    useEffect(() => {
+        loadEvents();
+    }, []);
+
+    const loadEvents = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const response = await api.get('/sights');
+            setEvents(response.data);
+        } catch (error) {
+            setError(error.message || 'Failed to load events');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const filteredEvents = events.filter(event =>
         (category === 'All' || event.category === category) &&
         event.name.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -30,7 +50,7 @@ const EventDisplay = ({ category, searchText }) => {
                     <h4 className="alert-heading">Error Loading Events</h4>
                     <p>{error}</p>
                     <hr />
-                    <button className="btn btn-outline-danger" onClick={refreshEvents}>
+                    <button className="btn btn-outline-danger" onClick={loadEvents}>
                         Try Again
                     </button>
                 </div>
@@ -42,8 +62,8 @@ const EventDisplay = ({ category, searchText }) => {
         <div className="event-display container py-4">
             <div className="row g-4">
                 {filteredEvents && filteredEvents.length > 0 ? (
-                    filteredEvents.map((event, index) => (
-                        <EventItem key={index}
+                    filteredEvents.map((event) => (
+                        <EventItem key={event.id}
                             name={event.name}
                             description={event.description}
                             price={event.price}
@@ -61,7 +81,7 @@ const EventDisplay = ({ category, searchText }) => {
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default EventDisplay;
