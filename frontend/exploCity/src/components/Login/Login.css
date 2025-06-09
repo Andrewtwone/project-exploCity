@@ -7,6 +7,21 @@
     padding: 20px;
     width: 100% !important;
     margin: 0 !important;
+    position: relative;
+}
+
+.back-to-home {
+    position: absolute !important;
+    top: 20px !important;
+    left: 20px !important;
+    z-index: 10 !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+}
+
+.back-to-home:hover {
+    transform: translateX(-3px) !important;
 }
 
 .login-auth-box {

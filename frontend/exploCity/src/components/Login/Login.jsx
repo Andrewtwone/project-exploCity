@@ -1,31 +1,53 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { assets } from '../../assets/asserts';
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
+    const { login } = useAuth();
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        // Simulate API call
-        setTimeout(() => {
+        setError('');
+
+        try {
+            await login(email, password);
+
+            navigate('/');
+
+        } catch (error) {
+            setError(error.message || 'Invalid email or password');
+        } finally {
             setIsLoading(false);
-            // Add your actual login logic here
-        }, 1500);
+        }
     };
 
     return (
         <div className="login-auth-container">
+            <Link to="/" className="back-to-home position-absolute top-4 start-4 btn btn-outline-primary">
+                <i className="bi bi-arrow-left me-2"></i>
+                Back to Home
+            </Link>
+
             <div className="login-auth-box">
                 <div className="login-auth-header">
                     <img src={assets.logo} alt="ExploCity Logo" className="login-auth-logo" />
                     <h2>Welcome Back</h2>
                     <p>Please sign in to continue</p>
                 </div>
+
+                {error && (
+                    <div className="login-error-message">
+                        {error}
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="login-auth-form">
                     <div className="login-form-group">
@@ -35,7 +57,10 @@ const Login = () => {
                                 type="email"
                                 placeholder="Email address"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    setError('');
+                                }}
                                 required
                             />
                         </div>
@@ -48,7 +73,10 @@ const Login = () => {
                                 type="password"
                                 placeholder="Password"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    setError('');
+                                }}
                                 required
                             />
                         </div>

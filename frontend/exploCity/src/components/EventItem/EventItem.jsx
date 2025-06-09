@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import './EventItem.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import { useAuth } from '../../context/AuthContext';
 
 const EventItem = ({ name, description, id, imageUrl, price }) => {
-
-    const { increaseQty, decreaseQty, quantities } = useContext(StoreContext);
-
+    const { addToCart, removeFromCart, quantities } = useContext(StoreContext);
+    const { user } = useAuth();
     const navigate = useNavigate();
 
     const handleCardClick = (e) => {
@@ -16,9 +16,20 @@ const EventItem = ({ name, description, id, imageUrl, price }) => {
         }
     };
 
-    // const handleAddClick = (e) => {
-    //     e.stopPropagation();
-    // };
+    const handleAddToCart = async (e) => {
+        e.stopPropagation();
+        if (!user) {
+            localStorage.setItem('redirectAfterLogin', `/sights/${id}`);
+            navigate('/login');
+            return;
+        }
+        await addToCart(id);
+    };
+
+    const handleRemoveFromCart = async (e) => {
+        e.stopPropagation();
+        await removeFromCart(id);
+    };
 
     return (
         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -46,26 +57,26 @@ const EventItem = ({ name, description, id, imageUrl, price }) => {
                 </div>
                 <div className="card-footer d-flex justify-content-between bg-light card-actions">
                     <button className="btn btn-outline-primary btn-sm" onClick={handleCardClick}>View Event</button>
-                    {quantities[id] > 0 ? (
+                    {user && quantities[id] > 0 ? (
                         <div className="d-flex align-items-center gap-2 addBtns">
-                            <button className="btn btn-danger btn-sm" onClick={() => decreaseQty(id)}>
+                            <button className="btn btn-danger btn-sm" onClick={handleRemoveFromCart}>
                                 <i className="bi bi-dash-circle"></i>
                             </button>
                             <span className="fw-bold">{quantities[id]}</span>
-                            <button className="btn btn-success btn-sm" onClick={() => increaseQty(id)}>
+                            <button className="btn btn-success btn-sm" onClick={handleAddToCart}>
                                 <i className="bi bi-plus-circle"></i>
                             </button>
                         </div>
                     ) : (
-                        <button className="btn btn-primary btn-sm" onClick={() => increaseQty(id)}>
-                            <i className="bi bi-plus-circle"></i>
+                        <button className="btn btn-primary btn-sm" onClick={handleAddToCart}>
+                            <i className="bi bi-plus-circle me-1"></i>
+                            {user ? 'Add' : 'Login to Add'}
                         </button>
                     )}
-
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default EventItem;
