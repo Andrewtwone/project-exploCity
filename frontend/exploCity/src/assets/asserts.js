@@ -32,7 +32,7 @@ export const categories = [
         icon: art
     },
     {
-        category: "Theatre & Perfomances",
+        category: "Theatre & Performances",
         icon: theatre
     },
     {

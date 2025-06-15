@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports: 
+      - "8080:8080"
+    depends_on:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/sighties
+      AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+      AWS_SECRET_KEY: ${AWS_SECRET_KEY}
+      
+  mongo:
+    image: mongo:6
+    environment:
+      MONGO_INITDB_DATABASE: sighties
+    volumes:
+      - mongo-data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+      
+  main-frontend:
+    build: ./frontend/exploCity
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+      
+  admin-frontend:
+    build: ./frontend/adminpanel
+    ports:
+      - "3001:80"
+    depends_on:
+    - backend
+      
+volumes:
+  mongo-data:
+      
