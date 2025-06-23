@@ -1,5 +1,23 @@
 # Contributing Guidelines
 
+## Setup
+To get started with development:
+1. Clone the repository via SSH:
+   ```bash
+   git clone git@github.com:your-team/project-name.git
+   ```
+2. Create your own feature branch:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Work independently, then push your changes:
+   ```bash
+   git add .
+   git commit -m "Add feature"
+   git push origin feature/your-feature-name
+   ```
+4. Open a pull request to the `dev` branch.
+
 ## Branches
 - `main`: stable release only; all code here must be reviewed and tested
 - `dev`: all approved features go here before merging to main
