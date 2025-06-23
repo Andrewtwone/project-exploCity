@@ -18,18 +18,20 @@ const EventDisplay = ({ category, searchText }) => {
             setLoading(true);
             setError(null);
             const response = await api.get('/sights');
-            setEvents(response.data);
+            console.log('API Response:', response.data);
+            setEvents(Array.isArray(response.data) ? response.data : []);
         } catch (error) {
+            console.error('Error loading events:', error);
             setError(error.message || 'Failed to load events');
         } finally {
             setLoading(false);
         }
     };
 
-    const filteredEvents = events.filter(event =>
+    const filteredEvents = Array.isArray(events) ? events.filter(event =>
         (category === 'All' || event.category === category) &&
         event.name.toLowerCase().includes(searchText.toLowerCase())
-    );
+    ) : [];
 
     if (loading) {
         return (

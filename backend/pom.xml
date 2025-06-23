@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>ExpocityProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ExpocityProject</name>
+	<name>ExplocityProject</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -130,7 +130,7 @@
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
-							<version>1.18.38</version>
+<!--							<version>1.18.38</version>-->
 						</exclude>
 					</excludes>
 				</configuration>

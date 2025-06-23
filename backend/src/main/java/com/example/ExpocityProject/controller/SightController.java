@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:3000", "http://main-frontend:80"})
 @RestController
 @RequestMapping("/api/sights")
 @AllArgsConstructor
