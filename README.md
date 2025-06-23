@@ -3,7 +3,7 @@
 A web platform for discovering and managing city events, designed for both residents and tourists. The app helps users plan their free time by providing a central source of information about cultural, entertainment, and tourist activities. It features separate interfaces for users and administrators, with a React frontend, Spring Boot backend, MongoDB database, and AWS S3 for file storage.
 
 ## Team
-- [Add team members here]
+- Andrii Khvesyk, Denys & Artem Tkachenko
 
 ## Features
 - Browse all available city events and attractions
