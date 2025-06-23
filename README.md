@@ -45,8 +45,8 @@ A web platform for discovering and managing city events, designed for both resid
 ### Steps
 1. **Clone the repository:**
    ```bash
-   git clone git@github.com:your-team/project-name.git
-   cd project-name
+   git clone git@github.com:Andrewtwone/project-exploCity.git
+   cd project-exploCity
    ```
 2. **Create or copy the `.env` file as described above**
 3. **Start the application:**

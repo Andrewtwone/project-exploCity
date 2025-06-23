@@ -4,7 +4,7 @@
 To get started with development:
 1. Clone the repository via SSH:
    ```bash
-   git clone git@github.com:your-team/project-name.git
+   git clone git@github.com:Andrewtwone/project-exploCity.git
    ```
 2. Create your own feature branch:
    ```bash
